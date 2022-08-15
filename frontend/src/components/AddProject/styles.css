@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  block-size: 150px;
+  inline-size: 350px;
+  flex-direction: column;
+  margin-block-start: 100px;
+  background-color: #efefef;
+  color: #000000;
+  border-radius: 5px;
+}
