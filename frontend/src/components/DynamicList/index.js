@@ -63,12 +63,14 @@ function DynamicList(props) {
     }
 
     const addToList = async () => {
-        let tempArr = list;
-        tempArr.push({ "taskName": value, "status": 1 });
-        setList(tempArr);
-        setValue("");
-        const url = `${process.env.REACT_APP_API}/projectUpdate:${projectId}`;
-        await loadData(url, { "tasks": tempArr }, 'POST');
+        if (value !== '') {
+            let tempArr = list;
+            tempArr.push({ "taskName": value, "status": 1 });
+            setList(tempArr);
+            setValue("");
+            const url = `${process.env.REACT_APP_API}/projectUpdate:${projectId}`;
+            await loadData(url, { "tasks": tempArr }, 'POST');
+        }
     };
 
     const deleteItem = async (index) => {
@@ -145,9 +147,7 @@ function DynamicList(props) {
                                         <IconButton onClick={() => deleteItem(i)}>
                                             <DeleteIcon />
                                         </IconButton>
-                                        <Checkbox
-                                            checked={checked[0] && checked[1]}
-                                            onChange={handleCheck} />
+                                        <Checkbox />
                                         {item.taskName}
                                     </Grid>
                                 ))
